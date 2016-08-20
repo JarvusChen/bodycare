@@ -33,6 +33,7 @@ app.controller('MainController',function($firebaseArray,$scope){
 				}				
 			}
 		};
+		console.log(tempArr1)
 		ref.child("gsrArr").set(tempArr1);
 	}
 

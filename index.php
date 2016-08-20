@@ -73,10 +73,10 @@
 									<span class=info>{{main.dataAll[main.dataAll.length-1].data2}}</span>
 									<h2>%</h2>
 								</div class = "box">
-								<div class = "box">
+<!-- 								<div class = "box">
 									血流量<br>
 									<span class=info>{{main.dataAll[main.dataAll.length-1].data3}}</span>
-								</div>
+								</div> -->
 							</section>
 					</section>
 					
@@ -98,15 +98,18 @@
 							</section>
 						</div>
 						<div class=row>
-							<section class=6u>
+<!-- 							<section class=6u>
 								<h1>血流量</h1>
 								<div class=wavebox>
 									<div google-chart chart="main.chartObject3" style="height:100%; width:90%;"></div>
 								</div>
+							</section> -->
+							<section class=2u>
 							</section>
 							<section class=6u>
 								<!-- Trigger the modal with a button -->
-								<br><br><br><br><br><br><br><br><br><br>
+								<br><br><br><br><br>
+								<!-- <br><br><br><br><br> -->
 								<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" ng-click="main.showDetial()">詳細資料</button>
 
 								<!-- Modal -->
@@ -122,7 +125,7 @@
 									        	<p>
 													<table>
 														<tr>
-															<td>時間</td><td>脈搏(BPM)</td><td>血氧 (%)</td><td>血流量</td>
+															<td>時間</td><td>脈搏(BPM)</td><td>血氧 (%)</td> <!-- <td>血流量</td> -->
 														</tr>
 														<tr ng-repeat="d in main.dataAll | reverse | limitTo:499:0">
 															<td>
@@ -135,9 +138,9 @@
 															<td>
 																{{d.data2}}
 															</td>
-															<td>
+<!-- 															<td>
 																{{d.data3}}
-															</td>
+															</td> -->
 														</tr>
 														</table>
 									        	</p>
