@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html ng-app="myApp">
 	<head>
-		<title>長期病患生理監控系統 | 監控二</title>
+		<title>長期病患生理監控系統 | 總監控</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -53,18 +53,20 @@
 				<!-- Main -->
 					<section id="main">
 						<div class=nav>
-							<a href="index.php">監控一</a> <span class=active><a href="index2.php">監控二</a></span> <a href="index3.php">總監控</a>
+							<a href="index.php">監控一</a> <a href="index2.php">監控二</a> <span class=active><a href="index3.php">總監控</a></span>
 						</div>
 						<div class=top>
 							<h3>長期病患生理監控系統</h3>
 						</div>
-						<h2>► 即時資訊 ◄</h2>
+						<h2>► 異常資訊整理 ◄</h2>
 						<span id="showbox"></span>
 						<br><br><br>
 						<div class=row>
 							<section class=6u><br>
-								<b><font color="#6633cc" size="5px">呼吸變化大時刻</font></b><br><br>
-								<div google-chart chart="main.chartObject5" style="height:100%; width:100%;"></div>
+								<b><font color="#6633cc" size="5px">1、脈搏小於60、大於100</font></b><br>
+								<b><font color="#6633cc" size="5px">2、血氧濃度低於80%</font></b><br>
+								<b><font color="#6633cc" size="5px">3、呼吸順暢度異常</font></b><br><br>
+								<!-- <div google-chart chart="main.chartObject5" style="height:100%; width:100%;"></div> -->
 							</section>
 							<section class=6u>
 								<br><br><br><br><br><br><br><br><br><br><br>
@@ -107,58 +109,6 @@
 						</div>
 					</section>
 					
-					<div class=wave>
-						<hr>
-						<h2>► 波型圖 ◄</h2>					
-						<div class=row>
-							<section class=6u>
-								<h1>呼吸順暢度</h1>
-								<div class=wavebox>
-									<div google-chart chart="main.chartObject4" style="height:100%; width:90%;"></div>
-								</div>
-							</section>
-							<section class=6u>
-								<!-- Trigger the modal with a button -->
-								<br><br><br><br><br><br><br><br><br><br>
-								<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" ng-click="main.showDetial()">詳細資料</button>
-
-								<!-- Modal -->
-								<div class="modal fade" id="myModal" role="dialog">
-								    <div class="modal-dialog">
-									    <!-- Modal content-->
-									    <div class="modal-content">
-									    	<div class="modal-header">
-									    		<button type="button" class="close" data-dismiss="modal">&times;</button>
-									    		<h4 class="modal-title">詳細資料</h4>
-									        </div>
-									        <div class="modal-body">
-									        	<p>
-													<table>
-														<tr>
-															<td>時間</td><td>呼吸順暢度</td>
-														</tr>
-														<tr ng-repeat="d in main.dataAll2 | reverse | limitTo:499:0">
-															<td>
-																{{d.$id.split("")[0]}}{{d.$id.split("")[1]}}{{d.$id.split("")[2]}}{{d.$id.split("")[3]}}/{{d.$id.split("")[4]}}{{d.$id.split("")[5]}}/{{d.$id.split("")[6]}}{{d.$id.split("")[7]}}
-																{{d.$id.split("")[8]}}{{d.$id.split("")[9]}}:{{d.$id.split("")[10]}}{{d.$id.split("")[11]}}:{{d.$id.split("")[12]}}{{d.$id.split("")[13]}}
-															</td>															
-															<td>
-																{{d.data4}}
-															</td>
-														</tr>
-													</table>
-									        	</p>
-									        </div>
-									        <div class="modal-footer">
-									        	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-									        </div>
-									    </div>
-								    </div>
-								</div>
-							</section>
-						</div>
-					</div>
-					{{main.createChart2()}}
 				<!-- Footer -->
 					<footer id="footer">
 						<font color=#666666>Delevoped by 曹永忠, 陳奕文, 簡漢君, 郭俊志 &copy; hackNTU 2016</font>

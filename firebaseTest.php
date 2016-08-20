@@ -9,6 +9,8 @@
     $data2 = $_GET['data2'];
     $data3 = $_GET['data3'];
     $data4 = $_GET['data4'];
+    $data5 = $_GET['data5'];
+    $data6 = $_GET['data6'];
     // --- $arduino_data_post = $_POST['name'];
     // --- Set up your Firebase url structure here
 
@@ -22,4 +24,6 @@
     $response = $fb->set("/dataA/" . $now . "/data2/", $data2);
     $response = $fb->set("/dataA/" . $now . "/data3/", $data3);
     $response = $fb->set("/dataB/" . $now . "/data4/", $data4);
+    $response = $fb->set("/dataB/" . $now . "/data5/", $data5);
+    $response = $fb->set("/dataB/" . $now . "/data6/", $data6);
     sleep(2);

@@ -7,9 +7,32 @@ app.controller('MainController',function($firebaseArray,$scope){
 
 	this.dataAll = $firebaseArray(ref.child("dataA"));
 	this.dataAll2 = $firebaseArray(ref.child("dataB"));
-	this.showDetial = function(){
-		// console.log(this.dataAll)
+	this.gsr = $firebaseArray(ref.child("gsrArr"));
 
+
+
+	// select GSR
+	selectGSR = function(obj){
+		var tempArr1 = [];
+		var isCont = false;
+		for (var i = 0; i < obj.length - 2; i++) {
+			if ( obj[i + 1].data6 == 1 && obj[i + 2].data6 == 1){
+				tempArr1[tempArr1.length] = {
+					'time' : obj[i].$id,
+					'value' : obj[i].data4,
+				}
+			}else if( obj[i + 1].data6 == 1 && obj[i + 2].data6 != 1 ){
+				tempArr1[tempArr1.length] = {
+					'time' : obj[i].$id,
+					'value' : obj[i].data4,
+				}
+				tempArr1[tempArr1.length] = {
+					'time' : obj[i + 1].$id,
+					'value' : obj[i + 1].data4,
+				}				
+			}
+		};
+		ref.child("gsrArr").set(tempArr1);
 	}
 
 	// chart
@@ -68,6 +91,19 @@ app.controller('MainController',function($firebaseArray,$scope){
 	        legend: { position: "none" },
 	    };
 
+	this.chartObject5 = {};
+
+	    this.chartObject5.data = {"cols": [
+	        {id: "t", label: "Time", type: "string"},
+	        {id: "s", label: "Value", type: "number"}
+	    	], "rows": [
+
+	    ]};
+	    this.chartObject5.type = "LineChart";
+	    this.chartObject5.options = {
+	        // 'title': 'How Much Pizza I Ate Last Night'
+	        legend: { position: "none" },
+	    };
     this.createChart = function(){
 
 	    for (var i = 0; i < this.dataAll.length; i++) {
@@ -98,12 +134,22 @@ app.controller('MainController',function($firebaseArray,$scope){
 	            {v: this.dataAll2[i].data4},
 	        ]};
 	    };
+	    for (var i = 0; i < this.gsr.length; i++) {
+			this.chartObject5.data.rows[i] = 
+	        {c: [
+	            {v: this.gsr[i].time.split("")[8] + this.gsr[i].time.split("")[9] + ":" + this.gsr[i].time.split("")[10] + this.gsr[i].time.split("")[11] + ":" + this.gsr[i].time.split("")[12] + this.gsr[i].time.split("")[13]},
+	            {v: this.gsr[i].value},
+	        ]};
+	    };
 	}
 
 	var times = 0;
 	ref.on("child_changed", function(snapshot) {
 		this.dataAll = $firebaseArray(ref.child("dataA"));
+		this.dataAll2 = $firebaseArray(ref.child("dataB"));
 		setTimeout(function() {
+
+			selectGSR(this.dataAll2)
 			
 			if ( this.dataAll[this.dataAll.length-1].data1 < 60 ){
 				times = times + 1;
@@ -113,7 +159,8 @@ app.controller('MainController',function($firebaseArray,$scope){
 				times = 0;
 			}
 			if ( times >= 9 ){
-				alert("脈搏異常，請注意！\n成人脈搏正常狀況下每分鐘60至100下。")
+				// alert("脈搏異常，請注意！\n成人脈搏正常狀況下每分鐘60至100下。")
+				console.log("脈搏異常")
 				times = 0;
 			}
 			
