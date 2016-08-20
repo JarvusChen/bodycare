@@ -14,8 +14,8 @@
     /// --- Making calls
     $fb = new fireBase($url, $token);
 
-
-    $now = (string)date("Ymdhisa");
+    date_default_timezone_set ('Asia/Taipei');
+    $now = (string)date("YmdHis");
     echo $now;
     $response = $fb->set("/data/" . $now . "/data1/", $data1);
     $response = $fb->set("/data/" . $now . "/data2/", $data2);
