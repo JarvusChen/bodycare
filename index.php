@@ -63,7 +63,7 @@
 								<div class = "box">
 									脈搏<br>
 									<span class=info>{{main.dataAll[main.dataAll.length-1].data1}}</span>
-									<h2>每分</h2>
+									<h2>BPM</h2>
 								</div>
 								<div class = "box">
 									血氧<br>
@@ -123,7 +123,7 @@
 									        	<p>
 													<table>
 														<tr>
-															<td>時間</td><td>脈搏(每分)</td><td>血氧 (%)</td><td>血流量</td>
+															<td>時間</td><td>脈搏(BPM)</td><td>血氧 (%)</td><td>血流量</td>
 														</tr>
 														<tr ng-repeat="d in main.dataAll | reverse">
 															<td>
@@ -155,7 +155,7 @@
 					{{main.createChart()}}
 				<!-- Footer -->
 					<footer id="footer">
-						<font color=#666666>&copy; 曹永忠, 陳奕文, 簡漢君, 郭俊志 for hackNTU 2016. All rights reserved.</font>
+						<font color=#666666>Delevoped by 曹永忠, 陳奕文, 簡漢君, 郭俊志 &copy; hackNTU 2016</font>
 					</footer>
 
 
