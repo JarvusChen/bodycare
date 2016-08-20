@@ -3,7 +3,8 @@ var app= angular.module('myApp',["firebase",'googlechart']);
 app.controller('MainController',function($firebaseArray,$scope){
 
 	var ref = new Firebase("https://hackntu-c8663.firebaseio.com/")
-
+	var refA = new Firebase("https://hackntu-c8663.firebaseio.com/dataA/")
+	var refB = new Firebase("https://hackntu-c8663.firebaseio.com/dataB/")
 
 	this.dataAll = $firebaseArray(ref.child("dataA"));
 	this.dataAll2 = $firebaseArray(ref.child("dataB"));
@@ -144,12 +145,10 @@ app.controller('MainController',function($firebaseArray,$scope){
 	}
 
 	var times = 0;
-	ref.on("child_changed", function(snapshot) {
+	refA.on("child_changed", function(snapshot) {
 		this.dataAll = $firebaseArray(ref.child("dataA"));
-		this.dataAll2 = $firebaseArray(ref.child("dataB"));
 		setTimeout(function() {
 
-			selectGSR(this.dataAll2)
 			
 			if ( this.dataAll[this.dataAll.length-1].data1 < 60 ){
 				times = times + 1;
@@ -163,12 +162,17 @@ app.controller('MainController',function($firebaseArray,$scope){
 				console.log("脈搏異常")
 				times = 0;
 			}
-			
-
+		
 		}, 5000);
 		
 	});
-
+	refB.on("child_changed", function(snapshot) {
+		this.dataAll2 = $firebaseArray(ref.child("dataB"));
+		setTimeout(function() {
+			selectGSR(this.dataAll2)
+		}, 5000);
+		
+	});
 });
 
 app.filter('reverse', function() {
