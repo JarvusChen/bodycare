@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html ng-app="myApp">
 	<head>
-		<title>長期病患生理監控系統 | 監控一</title>
+		<title>長期病患生理監控系統 | 監控二</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -53,7 +53,7 @@
 				<!-- Main -->
 					<section id="main">
 						<div class=nav>
-							<span class=active><a href="index.php">監控一</a></span> <a href="index2.php">監控二</a> <a href="index3.php">總監控</a>
+							<a href="index.php">監控一</a> <span class=active><a href="index2.php">監控二</a></span> <a href="index3.php">總監控</a>
 						</div>
 						<div class=top>
 							<h3>長期病患生理監控系統</h3>
@@ -64,18 +64,8 @@
 							<section class="thumbnails">
 
 								<div class = "box">
-									脈搏<br>
-									<span class=info>{{main.dataAll[main.dataAll.length-1].data1}}</span>
-									<h2>BPM</h2>
-								</div>
-								<div class = "box">
-									血氧<br>
-									<span class=info>{{main.dataAll[main.dataAll.length-1].data2}}</span>
-									<h2>%</h2>
-								</div class = "box">
-								<div class = "box">
-									血流量<br>
-									<span class=info>{{main.dataAll[main.dataAll.length-1].data3}}</span>
+									皮膚的電導率<br>
+									<span class=info>{{main.dataAll2[main.dataAll2.length-1].data4}}</span>
 								</div>
 							</section>
 					</section>
@@ -85,23 +75,9 @@
 						<h2>► 波型圖 ◄</h2>					
 						<div class=row>
 							<section class=6u>
-								<h1>脈搏</h1>
+								<h1>皮膚的電導率</h1>
 								<div class=wavebox>
-									<div google-chart chart="main.chartObject" style="height:100%; width:90%;"></div>
-								</div>
-							</section>
-							<section class=6u>
-								<h1>血氧</h1>
-								<div class=wavebox>
-									<div google-chart chart="main.chartObject2" style="height:100%; width:90%;"></div>
-								</div>
-							</section>
-						</div>
-						<div class=row>
-							<section class=6u>
-								<h1>血流量</h1>
-								<div class=wavebox>
-									<div google-chart chart="main.chartObject3" style="height:100%; width:90%;"></div>
+									<div google-chart chart="main.chartObject4" style="height:100%; width:90%;"></div>
 								</div>
 							</section>
 							<section class=6u>
@@ -122,21 +98,15 @@
 									        	<p>
 													<table>
 														<tr>
-															<td>時間</td><td>脈搏(BPM)</td><td>血氧 (%)</td><td>血流量</td>
+															<td>時間</td><td>皮膚的電導率</td>
 														</tr>
-														<tr ng-repeat="d in main.dataAll | reverse | limitTo:499:0">
+														<tr ng-repeat="d in main.dataAll2 | reverse | limitTo:499:0">
 															<td>
 																{{d.$id.split("")[0]}}{{d.$id.split("")[1]}}{{d.$id.split("")[2]}}{{d.$id.split("")[3]}}/{{d.$id.split("")[4]}}{{d.$id.split("")[5]}}/{{d.$id.split("")[6]}}{{d.$id.split("")[7]}}
 																{{d.$id.split("")[8]}}{{d.$id.split("")[9]}}:{{d.$id.split("")[10]}}{{d.$id.split("")[11]}}:{{d.$id.split("")[12]}}{{d.$id.split("")[13]}}
 															</td>															
 															<td>
-																{{d.data1}}
-															</td>
-															<td>
-																{{d.data2}}
-															</td>
-															<td>
-																{{d.data3}}
+																{{d.data4}}
 															</td>
 														</tr>
 														</table>
@@ -151,7 +121,7 @@
 							</section>
 						</div>
 					</div>
-					{{main.createChart()}}
+					{{main.createChart2()}}
 				<!-- Footer -->
 					<footer id="footer">
 						<font color=#666666>Delevoped by 曹永忠, 陳奕文, 簡漢君, 郭俊志 &copy; hackNTU 2016</font>
