@@ -7,7 +7,7 @@ app.controller('MainController',function($firebaseArray,$scope){
 
 	this.dataAll = $firebaseArray(ref.child("data"));
 	this.showDetial = function(){
-		console.log(this.dataAll)
+		// console.log(this.dataAll)
 	}
 
 	// chart
