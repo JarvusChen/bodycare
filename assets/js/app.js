@@ -171,12 +171,12 @@ app.controller('MainController',function($firebaseArray,$scope){
 			this.chartObject2.data.rows[i] = 
 	        {c: [
 	            {v: " "},
-	            {v: this.dataAll[i].data3},
+	            {v: this.dataAll[i].data2},
 	        ]};
 			this.chartObject3.data.rows[i] = 
 	        {c: [
 	            {v: " "},
-	            {v: this.dataAll[i].data2},
+	            {v: this.dataAll[i].data3},
 	        ]};
 	    };
 
