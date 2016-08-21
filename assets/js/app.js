@@ -106,6 +106,60 @@ app.controller('MainController',function($firebaseArray,$scope){
 	        // 'title': 'How Much Pizza I Ate Last Night'
 	        legend: { position: "none" },
 	    };
+
+	this.chartObject6 = {
+	  "type": "LineChart",
+	  "displayed": false,
+	  "data": {
+	    "cols": [
+	      {
+	        "id": "time",
+	        "label": "value",
+	        "type": "string",
+	        "p": {}
+	      },
+	      {
+	        "id": "hp",
+	        "label": "hp_value",
+	        "type": "number",
+	        "p": {}
+	      },
+	      {
+	        "id": "o2",
+	        "label": "o2_value",
+	        "type": "number",
+	        "p": {}
+	      },
+	      {
+	        "id": "breath",
+	        "label": "br_value",
+	        "type": "number",
+	        "p": {}
+	      },
+	    ],
+	    "rows": []
+	  },
+	  "options": {
+	    // "title": "Sales per month",
+	    // "isStacked": "true",
+	    "fill": 20,
+	    "displayExactValues": true,
+	    // "legend" : { position: "none" },
+	    // "vAxis": {
+	    //   "title": "Sales unit",
+	    //   "gridlines": {
+	    //     "count": 10
+	    //   }
+	    // },
+	    // "hAxis": {
+	    //   "title": "Date"
+	    // }
+	  },
+	  "formatters": {}
+	}
+
+
+
     this.createChart = function(){
 
 	    for (var i = 0; i < this.dataAll.length; i++) {
@@ -144,6 +198,47 @@ app.controller('MainController',function($firebaseArray,$scope){
 	        ]};
 	    };
 	}
+
+    this.createChart3 = function(){
+
+
+	  	for (var i = 0; i < this.dataAll.length ; i++) {
+			this.chartObject6.data.rows[i] = 
+			      {
+			        "c": [
+				          {
+				            "v": " "
+				          },
+				          {
+				            "v": this.dataAll[i].data1,
+				          },
+				          {
+				            "v": this.dataAll[i].data2,
+				          }
+			        ]
+	 			 };
+	 	}
+	  	for (var i = 0; i < this.dataAll.length ; i++) {
+			this.chartObject6.data.rows[i].c[3] = 
+	          {
+	            "v": this.dataAll2[i].data4,
+	          }
+	 	}	
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	var times = 0;
 	refA.on("child_changed", function(snapshot) {

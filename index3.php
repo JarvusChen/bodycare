@@ -66,11 +66,10 @@
 								<b><font color="#6633cc" size="5px">1、脈搏小於60、大於100</font></b><br>
 								<b><font color="#6633cc" size="5px">2、血氧濃度低於80%</font></b><br>
 								<b><font color="#6633cc" size="5px">3、呼吸順暢度異常</font></b><br><br>
-								<!-- <div google-chart chart="main.chartObject5" style="height:100%; width:100%;"></div> -->
 							</section>
 							<section class=6u>
-								<br><br><br><br><br><br><br><br><br><br><br>
-								<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal2" ng-click="main.showDetial()">詳細資料</button>
+								<br>
+								<!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal2" ng-click="main.showDetial()">詳細資料</button> -->
 
 								<!-- Modal -->
 								<div class="modal fade" id="myModal2" role="dialog">
@@ -101,11 +100,17 @@
 									        </div>
 									        <div class="modal-footer">
 									        	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+									        	{{main.createChart3()}}
 									        </div>
 									    </div>
 								    </div>
 								</div>
 							</section>
+						</div>
+						<div class=row>
+							<section class=12u>
+								<div google-chart chart="main.chartObject6" style="height:500px; width:100%;"></div>
+							<section>
 						</div>
 					</section>
 					
