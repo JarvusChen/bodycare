@@ -58,7 +58,7 @@
 						<div class=top>
 							<h3>長期病患生理監控系統</h3>
 						</div>
-						<h2>► 異常資訊整理 ◄</h2>
+						<h2>► 資訊整理，用於判斷異常後，各數值反應 ◄</h2>
 						<span id="showbox"></span>
 						<br><br><br>
 						<div class=row>
